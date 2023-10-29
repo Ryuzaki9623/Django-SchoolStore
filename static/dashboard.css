@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Red+Hat+Mono:wght@300&display=swap');
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-89 {
+    --b: 3px;
+    --s: .45em;
+    --color: #373B44;
+
+    padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+    color: var(--color);
+    --_p: var(--s);
+    background:
+        conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+        var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    transition: .3s linear, color 0s, background-color 0s;
+    outline: var(--b) solid #0000;
+    outline-offset: .6em;
+    font-size: 16px;
+
+    border: 0;
+
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-89:hover,
+.button-89:focus-visible {
+    --_p: 0px;
+    outline-color: var(--color);
+    outline-offset: .05em;
+}
+
+.button-89:active {
+    background: var(--color);
+    color: #fff;
+}
+.hidden {
+    display: none;
+}
+/* Style the form container */
+.form-container {
+    position: absolute;
+    right: 0px; /* Initial hidden position */
+    top: 0;
+    width: 600px; /* Adjust the width as needed */
+    background-color: #f0f0f0;
+    padding: 20px;
+    transition: right 0.3s;
+    overflow: hidden; /* Hide overflowing content */
+}
+
+/* Center the form within its container */
+.form-container form {
+    text-align: center;
+}
+
+/* Style the form title */
+.form-container h2 {
+    font-size: 10px;
+    margin-bottom: 20px;
+}
+
+/* Style labels and input fields */
+.form-container label {
+    margin-top: 20px;
+    display: block;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 15px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="date"],
+.form-container input[type="number"],
+.form-container input[type="tel"],
+.form-container input[type="email"],
+.form-container select,
+.form-container textarea {
+    width: 50%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+/* Style radio buttons */
+.form-container input[type="radio"] + label{
+    display: inline;
+    margin: 2px;
+}
+
+/* Style checkboxes */
+.form-container input[type="checkbox"] + label{
+    display: inline;
+    margin: 5px;
+}
+
+/* Style the submit button */
+.form-container input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style the logout button */
+.form-container input[type="button"] {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.form-container input[type="button"]:hover {
+    background-color: #bb1d2c;
+}
+
+.errorlist {
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    color: #a94442;
+    padding: 10px;
+    margin-bottom: 10px;
+    list-style: none;
+    font-family: 'Open Sans',sans-serif;
+}
+
+.errorlist li {
+    margin: 5px 0;
+}
+
+
+
+

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@300&family=Red+Hat+Mono:wght@300&display=swap');
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .message-container {
+        text-align: center;
+        font-size: 30px;
+        font-family: 'Raleway', sans-serif;
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        background-color: #f0f0f0; /* Background color for the footer */
+        padding: 10px;
+    }
+
+    .footer a {
+        text-decoration: none;
+        color: #007BFF; /* Link color */
+        font-family: 'Raleway', sans-serif;
+    }

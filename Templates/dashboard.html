@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard.css' %}">
+    <style>
+        .form-container {
+            display: none;
+        }
+
+        .show-form {
+            display: block;
+        }
+
+        .move-left {
+            transform: translateX(-400px);
+        }
+
+        .button-form-container {
+            transition: transform 0.3s;
+        }
+
+        .show-form .button-form-container {
+            transform: translateX(-400px);
+        }
+    </style>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#show-form-button").click(function() {
+            $(".form-container").toggleClass("show-form");
+            $(".button-form-container").toggleClass("move-left");
+
+            if ($(".form-container").hasClass("show-form")) {
+                $(this).text("Hide Form");
+            } else {
+                $(this).text("Show Form");
+            }
+        });
+    });
+
+</script>
+<body>
+    {% if user.is_authenticated %}
+    <div class="center button-form-container">
+      <button class="button-89" id="show-form-button" role="button">Show Form</button>
+        {% csrf_token %}
+    </div>
+    <div class="form-container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <!-- Name -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+    
+            <!-- Date of Birth -->
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required><br>
+    
+            <!-- Age -->
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required><br>
+    
+            <!-- Gender -->
+            <label for="gender">Gender:</label><br>
+            <input type="radio" id="male" name="gender" value="Male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female" required>
+            <label for="female">Female</label><br>
+    
+            <!-- Phone Number -->
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required><br>
+    
+            <!-- Email Address -->
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required><br>
+    
+            <!-- Address -->
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" required></textarea><br>
+    
+            <!-- Department Dropdown -->
+            <div>
+                <!-- Department dropdown -->
+                <label for="department">Department:</label>
+                <select name="dept" id="department">
+                  <option value="">Select a Department</option>
+                  {% for dep in department %}
+                    <option value="{{ dep.id }}">{{ dep.depname }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div>
+                <!-- Course dropdown -->
+                <label for="course">Course:</label>
+                <select name="crs" id="course">
+                  <option value="">Select a Course</option>
+                    {% for item in course %}
+                      <option value="{{ item.depid_id }}">{{ item.crsname }}</option>
+                    {% endfor %}
+                </select>
+              </div>
+              <div>
+                <!-- Purpose dropdown -->
+                <label for="purpose">Purpose:</label>
+                <select name="prs" id="purpose">
+                  <option value="">Select a Purpose</option>
+                  {% for purpose in purposes %}
+                    <option value="{{ purpose.id }}">{{ purpose.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <script>
+ 
+                $(document).ready(function(){
+                 
+                 var department = $("#department");
+                 var course = $("#course");
+                 var $options = course.find('option');
+                 department.on('change',function(){
+                    course.html($options.filter('[value="'+ this.value  +'"]'));
+                 }).trigger('change'); 
+                 
+                 
+                }); 
+                </script> 
+            <!-- Materials Provided (Checkbox) -->
+            <label>Materials Provided:</label><br>
+            <input type="checkbox" id="notebook" name="materials[]" value="Notebook">
+            <label for="notebook">Notebook</label>
+            <input type="checkbox" id="pen" name="materials[]" value="Pen">
+            <label for="pen">Pen</label>
+            <input type="checkbox" id="papers" name="materials[]" value="Exam Papers">
+            <label for="papers">Exam Papers</label>
+            {% if errors %}
+            <ul class="errorlist">
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        
+            <br><br>
+                
+            <!-- Submit & Logout Button -->
+            <input type="submit" value="Submit">
+            <input type="button" value="Logout" onclick="location.href='logout'">
+        </form>
+    </div>
+  {% endif %}    
+</body>
+</html
+
+
+
+
+
+
+
+

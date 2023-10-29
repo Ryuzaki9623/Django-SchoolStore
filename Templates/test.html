@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'test.css' %}">
+</head>
+<body>
+    <div class="message-container">
+        <h1>Order Confirmed</h1>
+        <p id="countdown">Redirecting in 20 seconds...</p>
+    </div>
+
+    <div class="footer">
+        <a href="/" id="stopCountdown">Can't Wait ? Click Here to go to the home page</a>
+    </div>
+
+    <script>
+        // Function to update the countdown
+        function updateCountdown(seconds) {
+            document.getElementById("countdown").textContent = `Redirecting in ${seconds} seconds...`;
+        }
+
+        // Initial countdown value
+        let countdownValue = 20;
+        let countdownTimeout;
+
+        // Display the initial countdown
+        updateCountdown(countdownValue);
+
+        // Function to update the countdown and redirect
+        function countdown() {
+            if (countdownValue > 0) {
+                countdownValue--;
+                updateCountdown(countdownValue);
+                countdownTimeout = setTimeout(countdown, 1000); // Update every 1 second
+            } else {
+                window.location.replace("/"); // Replace the current page in history and redirect to the home page
+            }
+        }
+
+        // Start the countdown
+        countdown();
+
+        // Function to stop the countdown and navigate to the home page
+        document.getElementById("stopCountdown").addEventListener("click", function() {
+            clearTimeout(countdownTimeout); // Stop the countdown
+            window.location.replace("/");
+        });
+    </script>
+</body>
+</html>

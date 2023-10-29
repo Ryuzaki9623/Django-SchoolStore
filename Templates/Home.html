@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+   <meta charset="UTF-8">
+   <title>Home</title>
+ <link rel="stylesheet" href="{% static 'home.css' %}">
+  <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <nav>
+    <div class="navbar">
+      <div class="logo"><a href="#">School Store</a></div>
+      <ul class="menu">
+        <li><a href="/credentials/login">Login</a></li>
+        <li><a href="/credentials/register">Register</a></li>
+        <li class="dropdown">
+            <a>Department</a>
+            <ul class="dropdown-content">
+              <li><a href="https://en.wikipedia.org/wiki/Computer_science">Computer Science</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Rocket_science">Rocket Science</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Artificial_intelligence">Artificial Intelligence</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Robotics">Robotics</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Data_science">Data Science</a></li>
+            </ul>
+          </li>
+      </ul>
+    </div>
+  </nav>
+  <section id="Home">
+    <div class="button-section">
+      <a href="/credentials/login">
+        <button class="my-button">Login</button>
+      </a>
+    </div>
+  </section>
+</body>
+</html>
